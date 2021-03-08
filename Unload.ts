@@ -5,9 +5,11 @@ import Unit from '@civ-clone/core-unit/Unit';
 export class Unload extends Action {
   perform() {
     this.unit().setWaiting();
-    (this.unit() as NavalTransport)
-      .cargo()
-      .forEach((unit: Unit): void => unit.activate());
+
+    (this.unit() as NavalTransport).cargo().forEach((unit: Unit): void => {
+      unit.moves().set(unit.movement());
+      unit.activate();
+    });
   }
 }
 

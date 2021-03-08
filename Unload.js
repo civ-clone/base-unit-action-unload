@@ -5,9 +5,10 @@ const Action_1 = require("@civ-clone/core-unit/Action");
 class Unload extends Action_1.default {
     perform() {
         this.unit().setWaiting();
-        this.unit()
-            .cargo()
-            .forEach((unit) => unit.activate());
+        this.unit().cargo().forEach((unit) => {
+            unit.moves().set(unit.movement());
+            unit.activate();
+        });
     }
 }
 exports.Unload = Unload;
