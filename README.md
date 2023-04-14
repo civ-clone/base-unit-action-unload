@@ -1,4 +1,3 @@
 # base-unit-action-unload
 
-This is a template repo.
-
+This package provides the `Unload` `Action` for `Transport` `Unit`s.

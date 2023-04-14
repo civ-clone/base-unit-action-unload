@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Unload = void 0;
 const Action_1 = require("@civ-clone/core-unit/Action");
+const Moved_1 = require("@civ-clone/core-unit/Rules/Moved");
 class Unload extends Action_1.default {
     perform() {
         this.unit().setWaiting();
@@ -9,6 +10,7 @@ class Unload extends Action_1.default {
             unit.moves().set(unit.movement());
             unit.activate();
         });
+        this.ruleRegistry().process(Moved_1.default, this.unit(), this);
     }
 }
 exports.Unload = Unload;
